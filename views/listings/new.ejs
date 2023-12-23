@@ -1,0 +1,71 @@
+<% layout('/layouts/boilerplate') -%>
+<body>
+    <div class="row">
+        <div class="col-8 offset-2" >
+   <br><br>
+    <form action="/listing" method="post" novalidate  class="row g-3 needs-validation">
+        <h3>Create New List</h3>
+
+        <div class="col-12">
+            <label for="title" class="form-label">Title</label>
+            <input name="listing[title]" type="text" class="form-control" id="title" placeholder="Classic Title" required>
+            <div class="invalid-feedback">
+                Please provide valid title.
+              </div>
+              <div class="valid-feedback">
+                Looks Good.
+              </div>
+        </div>
+
+        <div class="col-12">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="listing[description]" type="text" class="form-control" id="description" required></textarea>
+            <div class="invalid-feedback">
+                Please provide Description.
+              </div>
+              <div class="valid-feedback">
+                Looks Good!.
+              </div>
+        </div>
+
+        <div class="col-12">
+            <label for="Image" class="form-label">Image Link</label>
+            <input name="listing[image]" type="text" class="form-control" id="image" placeholder="Image Link Here">
+        </div>
+
+
+        <div class="col-md-4">
+            <label for="price" class="form-label">Price</label>
+            <input  name="listing[price]" placeholder="1200" type="number" class="form-control" id="price" required>
+            <div class="invalid-feedback">
+                Please provide Price.
+              </div>
+        </div>
+
+        
+
+        <div class="col-md-8">
+            <label for=country class="form-label">Country</label>
+            <input  name="listing[country]" placeholder="India" type="text" class="form-control" id="country" required>
+            <div class="invalid-feedback">
+                Please provide Country.
+              </div>
+        </div>
+
+        <div class="col-12">
+            <label for="location" class="form-label">Location</label>
+            <input  name="listing[location]" placeholder="Jalgaon, Maharashtra" type="text" class="form-control" id="location" required>
+            <div class="invalid-feedback">
+                Please provide Location.
+              </div>
+        </div>
+        
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary add-btn">Add New Hotel</button>
+        </div>
+        <br><br>
+    </form>
+    <br><br>
+    </div>
+</div>
+</body>

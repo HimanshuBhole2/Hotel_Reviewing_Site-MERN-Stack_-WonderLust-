@@ -1,0 +1,129 @@
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+   height: 100vh;
+}
+
+.container{
+    flex:1;
+}
+.navbar{
+    height: 5rem;
+}
+
+.fa-compass{
+    color:#fe424d;
+    font-size: 2rem;
+    margin: 0 1rem;
+}
+
+.nav-link{
+    color: #222222 !important;
+    font-size: 1.1rem;
+}
+.nav-link:hover{
+    color: #000 !important;;
+}
+/* Footer Here */
+.f-info{
+    background-color: #ebebeb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.f-info-links, .f-info-socials, f-info-brand{
+    margin: 0.5rem 0;
+}
+.f-info-links a{
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+
+.f-info-socials i{
+    font-size: 1.5rem;
+    margin: 0.5rem 0.5rem;
+
+}
+.f-info-brand{
+    margin: 0.5rem 0.5rem;
+    font-size: 1rem;
+}
+.f-info-links a{
+    margin: 0.5rem 0.5rem;
+    font-size: 0.9rem;
+}
+
+
+
+/* Cards */
+.listing-card{
+    border: none !important;
+    margin: 1rem ;
+}
+.card a{
+    text-decoration: none;
+    color:#222222 !important;
+}
+.card-img-top{
+    border-radius: 1rem !important;
+    object-fit: cover !important;
+    width: 100% !important;
+}
+
+.card-body{
+    padding: 1.2rem 0 !important;
+}
+
+.card-text p{
+    font-size: 400;
+    color: #222222 !important;
+}
+
+.designing-card :hover{
+    padding: 6px;
+    border-radius: 10px;
+    transform: scale(1.05);
+ box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+/* Card Effects */
+.card-img-overlay{
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    opacity: 0.1;
+    background-color: #fff;
+}
+/* create and update form */
+.add-btn{
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+.aleart
+
+/* Show  */
+
+.show-card{
+    padding: 2rem;
+}
+
+.show-btns{
+    display: flex;
+}
+
+.alert{
+    margin-top: 70px;
+}
+
+#rating{
+    border: none !important;
+}
+#rating:hover{
+    border: none !important;
+}
