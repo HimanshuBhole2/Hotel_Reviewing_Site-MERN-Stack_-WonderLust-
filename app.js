@@ -5,8 +5,15 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressErrors.js");
-const listing = require("./routes/listings.js");
-const reviews = require("./routes/reviews.js");
+const session = require('express-session');
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const User = require("./models/user.js");
+
+
+const listingRouter = require("./routes/listings.js");
+const reviewsRouter = require("./routes/reviews.js");
+const userRouter = require("./routes/user.js");
 
 
 // All Constants 
@@ -23,6 +30,14 @@ async function main(){
     await mongoose.connect(monurl);
 }
 
+
+const sessionOptions =  {
+    secret:"mysecreatesession",
+    resave:false,
+    saveUninitialized:true
+};
+
+
 main().then(()=>{
     console.log("This connection done successfully");
 }).catch((err)=>{
@@ -30,13 +45,29 @@ main().then(()=>{
 })
 
 
+app.use(session(sessionOptions));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.get("/demouser",async(req,res)=>{
+    let FakeUser = new User({
+        email:"bhole@gmail.com",
+        username:"delta-student"
+    })
+
+    let registereduser = await User.register(FakeUser,"helloworld");
+    res.send(registereduser);
+})
+
+
 // async function for error handling
-
-
-
-app.use('/listing',listing);
-app.use('/listing/:id/review',reviews)
-
+app.use('/listings',listingRouter);
+app.use('/listings/:id/review',reviewsRouter)
+app.use('/',userRouter);
 
 // app.get("/ListingModel",async (req,res)=>{
 //     let sampleListning = new ListingModel({

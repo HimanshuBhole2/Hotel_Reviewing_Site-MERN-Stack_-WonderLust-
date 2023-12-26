@@ -24,12 +24,12 @@
                 </div>
             <div class="show-btns">
                 <div class="col-md-2">
-                    <a href="/listing/<%= listing._id %>/edit">
+                    <a href="/listings/<%= listing._id %>/edit">
                     <button type="submit" class="btn btn-primary add-btn">Edit</button></a>
                 </div>
 
                 <div class="col-md-12">
-                    <form method="POST" action="/listing/<%= listing._id%>?_method=Delete" >
+                    <form method="POST" action="/listings/<%= listing._id%>?_method=Delete" >
                            <button type="submit" class="btn btn-dark ">Delete</button>
                     </form>
                 </div>

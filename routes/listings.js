@@ -52,7 +52,7 @@ router.get("/:id/edit",wrapAsync( async (req, res) => {
 router.put("/:id",validateListing,wrapAsync(async(req,res)=>{
     let {id} = req.params;
     await ListingModel.findByIdAndUpdate(id,{...req.body.listing});
-    res.redirect("/listing");
+    res.redirect("/listings");
 }));
 
 // delete Route
@@ -60,14 +60,14 @@ router.delete("/:id",wrapAsync(async (req, res) => {
     let { id } = req.params;
     let list = await ListingModel.findByIdAndDelete(id);
     console.log(list);
-    res.redirect("/listing");
+    res.redirect("/listings");
 }))
 
 // adding new list post method
 router.post("/",validateListing,wrapAsync( async (req, res, next) => {
     let listing = new ListingModel(req.body.listing);
     await listing.save();
-    res.redirect("/listing");
+    res.redirect("/listings");
 }))
 
 module.exports = router;

@@ -3,8 +3,44 @@ const app = express();
 const user = require("./routes/user.js");
 const post = require("./routes/posts.js");
 const cookieParser = require("cookie-parser")
+const session = require("express-session");
+const flash = require('connect-flash');
+const path = require('path');
+app.set("view engine", "ejs");
+app.set("views",path.join(__dirname,"views"));
 
+const sessionOptions =  {
+    secret:"mysecreatesession",
+    resave:false,
+    saveUninitialized:true
+};
 app.use(cookieParser("Secreate Code"));
+app.use(session(sessionOptions));
+app.use(flash());
+
+app.get("/register",(req,res)=>{
+    let {name= "anonmyus"} = req.query;
+    req.session.name = name;
+    let msg=  req.flash("name","Logged in Successfully");
+    res.redirect("/hello");
+
+})
+
+app.get("/hello",(req,res)=>{
+    let name = req.session.name;
+    res.render("new.ejs",{name,msg:req.flash("name")});
+})
+
+
+// app.get("/countsession",(req,res)=>{
+//     if(req.session.count){
+//         req.session.count++;
+//     }else{
+//         req.session.count = 1;
+//     }
+   
+//     res.send(`You Visited Here by ${req.session.count}`);
+// })
 
 app.get("/getsignedcookie",(req,res)=>{
     res.cookie("Country","India",{signed:true});
