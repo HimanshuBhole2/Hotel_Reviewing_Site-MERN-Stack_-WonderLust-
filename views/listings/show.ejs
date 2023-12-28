@@ -45,7 +45,7 @@
 
             <h4><b>Leave An Review</b></h4>
 
-            <form action="/listing/<%=listing.id%>/review" method="POST" novalidate class="mb-3 mt-3 needs-validation">
+            <form action="/listings/<%=listing.id%>/review" method="POST" novalidate class="mb-3 mt-3 needs-validation">
 
                 <div class="mb-3 mt-3">
                     <label for="rating" class="form-label">Rating</label>
@@ -76,7 +76,7 @@
                             <p class="card-text"><%=review.rating%></p>
                         </div>
                         
-                        <form action="/listing/<%=listing.id%>/review/<%=review.id%>?_method=Delete" method="POST">
+                        <form action="/listings/<%=listing.id%>/review/<%=review.id%>?_method=Delete" method="POST">
                             <button class="btn btn-sm btn-dark">Delete</button>
                         </form>
 

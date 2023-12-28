@@ -6,29 +6,41 @@ const cookieParser = require("cookie-parser")
 const session = require("express-session");
 const flash = require('connect-flash');
 const path = require('path');
+
+
 app.set("view engine", "ejs");
 app.set("views",path.join(__dirname,"views"));
 
 const sessionOptions =  {
-    secret:"mysecreatesession",
+    secret:"mysupersecreatecode",
     resave:false,
     saveUninitialized:true
 };
 app.use(cookieParser("Secreate Code"));
 app.use(session(sessionOptions));
 app.use(flash());
+app.use((req,res,next)=>{
+    res.locals.successMsg= req.flash("name");
+    res.locals.errorMsg = req.flash("error");
+    next();
+})
+
 
 app.get("/register",(req,res)=>{
-    let {name= "anonmyus"} = req.query;
+    let {name= "anonymus"} = req.query;
     req.session.name = name;
-    let msg=  req.flash("name","Logged in Successfully");
+    if(name=="anonymus"){
+         req.flash("error","User is not registered"); 
+    }else{
+        req.flash("name","Logged in Successfully");
+    }
     res.redirect("/hello");
 
 })
 
 app.get("/hello",(req,res)=>{
     let name = req.session.name;
-    res.render("new.ejs",{name,msg:req.flash("name")});
+    res.render("new.ejs",{name});
 })
 
 

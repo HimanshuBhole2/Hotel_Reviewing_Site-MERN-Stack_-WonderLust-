@@ -6,6 +6,8 @@ const {listingSchema,reviewSchema} = require('../schema.js');
 const ListingModel = require("../models/listing.js")
 const ReviewModel = require("../models/review.js");
 const review = require("../models/review.js");
+const flash = require("connect-flash");
+
 
 const validateReview = (req,res,next)=>{
     let {error} =  reviewSchema.validate(req.body);
@@ -22,6 +24,7 @@ router.delete("/:reviewId",wrapAsync(async(req,res)=>{
     let {id,reviewId} = req.params;
     await ListingModel.findByIdAndUpdate(id,{$pull:{reviews:reviewId}});
     await ReviewModel.findByIdAndDelete(reviewId);
+    req.flash("success","Review Deleted Successfully");
     res.redirect(`/listings/${id}`);
 }))
 
@@ -33,7 +36,8 @@ router.post("/",validateReview,wrapAsync(async (req,res)=>{
     await listing1.reviews.push(review1);
     await listing1.save();
     await review1.save();
-    console.log("Successfully Done with saving");
+    req.flash("success","New Review Added Successfully");
+
     res.redirect(`/listings/${id}`);
 }))
 
