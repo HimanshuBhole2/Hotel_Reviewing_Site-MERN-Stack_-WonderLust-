@@ -4,6 +4,9 @@ const User = require("../models/user.js");
 const wrapAsync = require("../utils/wrapAsync.js");
 const user = require("../models/user.js");
 const passport = require("passport");
+const session = require("express-session");
+const {isRedirectUrl} = require("../middleware.js");
+
 
 router.get("/signup",(req,res)=>{
     res.render("users/signup")
@@ -16,15 +19,26 @@ router.post("/signup",wrapAsync(async(req,res)=>{
         username:username
     })
     let registereduser = await User.register(user1,password);
-    res.redirect("/listings");
+    req.logIn(registereduser,(err)=>{
+        if(err){
+            return next(err);}
+            req.flash("success","Welcome to WonderLust. ");
+           return  res.redirect("/listings")
+    })
 }))
 
 router.get("/login",(req,res)=>{
     res.render("users/login.ejs");
 })
 
-router.post("/login",passport.authenticate("local",{failureRedirect:"/login"}),(req,res)=>{
-    res.redirect("/listings");
+router.post(
+    "/login",
+    isRedirectUrl,
+    passport.authenticate("local",
+    {failureRedirect:"/login"})
+    ,async (req,res)=>{
+        let redirectUrl = res.locals.redirectUrl || "/listings"
+    res.redirect(redirectUrl);
 })
 router.get("/logout",(req,res)=>{
     req.logOut((err)=>{
