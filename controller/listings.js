@@ -1,0 +1,64 @@
+const ListingModel = require("../models/listing.js")
+
+module.exports.index = async (req,res)=>{
+    const allListning = await ListingModel.find({});
+    res.render("listings/index.ejs", {allListning});
+    
+}
+
+module.exports.renderNewForm = async(req,res,next)=>{
+    res.render("listings/new.ejs")
+   
+}
+
+module.exports.showListings = async(req,res)=>{
+    let {id} = req.params;
+    let listing = await ListingModel.findById(id)
+    .populate({path:"reviews",
+    populate:{
+        path:"author"
+    }
+    }).populate('owner');
+    if(!listing){
+        req.flash("error","Listing You Requested Does Not Existed");
+        return res.redirect("/listings");
+    }
+    res.render('listings/show.ejs',{listing});
+}
+
+module.exports.editNewListings = async (req, res) => {
+    let { id } = req.params;
+    // Fetch the listing based on the ID and render the edit page
+    let listing = await ListingModel.findById(id);
+    if(!listing){
+        req.flash("error","Listing You Requested Does Not Existed");
+        return res.redirect("/listings");
+    }
+    res.render('listings/edit.ejs', { listing });
+}
+
+module.exports.updateListings = async(req,res)=>{
+    let{id} = req.params
+    await ListingModel.findByIdAndUpdate(id,{...req.body.listing});
+    req.flash('success',"Listing Updated Successfully");
+    res.redirect("/listings");
+}
+
+module.exports.destroyListings = async (req, res) => {
+    let { id } = req.params;
+    let listing = await ListingModel.findByIdAndDelete(id);
+    if(!listing){
+        req.flash("error","Listing You Requested Does Not Existed");
+        return res.redirect("/listings");
+    }
+    req.flash('success',`${listing.title} deleted Successfully`);
+    res.redirect("/listings");
+}
+
+module.exports.addNewListings = async (req, res, next) => {
+    let listing = new ListingModel(req.body.listing);
+    listing.owner = req.user._id;
+    await listing.save();
+    req.flash('success',"New Listing Created");
+    res.redirect("/listings");
+}

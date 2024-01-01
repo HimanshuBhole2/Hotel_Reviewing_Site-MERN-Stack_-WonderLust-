@@ -85,18 +85,6 @@ app.use('/listings',listingRouter);
 app.use('/listings/:id/review',reviewsRouter)
 app.use('/',userRouter);
 
-// app.get("/ListingModel",async (req,res)=>{
-//     let sampleListning = new ListingModel({
-//         title:"My New Villa",
-//         description:"By the beatch",
-//         price:1500,
-//         location:"Pushpendra Nagar",
-//     })
-
-//     await sampleListning.save();
-//     console.log("Sample Was Saved ");
-//     res.send("<h1>Saved Data Successfully</h1>");
-// })
 
 app.get("/",(req,res)=>{
     res.send("<h1>This is our Home Page </h1>")
