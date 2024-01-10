@@ -81,10 +81,10 @@
 
                 <button class="btn btn-outline-dark mb-3 mt-3">Add Review</button>
             </form>
-            <hr>
             <%}%>
             
-
+            <%if(listing.reviews.length){%>
+                <hr>
             <h4><b>All Reviews</b></h4>
             <div class="row">
                 <% for (review of listing.reviews) { %>
@@ -105,15 +105,29 @@
 
                     </div>
                 <%}%>
+                <hr>
             </div>
 
-        
-                
+            <%}%>         
         </div>
 
+        <!-- Maps are here -->
+        <div class="col-8 offset-2">
+
+            <gmp-map center="21.0077,75.5626" zoom="20" map-id="DEMO_MAP_ID">
+                <gmp-advanced-marker position="21.0077,75.5626" title="My location">
+                </gmp-advanced-marker>
+              </gmp-map>
+
+        </div>
 
 
     </div>
    <br><br>
 
 </body>
+
+<!-- Gmap Js -->
+<script async src="https://maps.googleapis.com/maps/api/js?key= <%=process.env.MAP_API_KEY%>&callback=console.debug&libraries=maps,marker&v=beta">
+</script>
+

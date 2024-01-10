@@ -127,3 +127,26 @@ body {
 #rating:hover{
     border: none !important;
 }
+
+/* Maps */
+
+gmp-map {
+    height: 50vh;
+    width: 100vh;
+    margin:auto;
+  }
+
+
+  @media (max-width:506px) {
+    gmp-map{
+        height:50vh;
+        width:auto;
+    }
+    .container{
+        height: 100vh;
+        width: auto;
+        padding: auto;
+        margin: auto;
+
+    }
+  }
