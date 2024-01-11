@@ -1,4 +1,6 @@
 const ListingModel = require("../models/listing.js")
+const MAP_API_KEY = process.env.MAP_API_KEY;
+const axios = require('axios');
 
 module.exports.index = async (req,res)=>{
     const allListning = await ListingModel.find({});
@@ -67,8 +69,18 @@ module.exports.addNewListings = async (req, res, next) => {
     let url = req.file.path;
     let fileName = req.file.filename;
     let listing = new ListingModel(req.body.listing);
+
+    const response = await axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+        params: {
+            address: listing.location,
+            key: MAP_API_KEY,
+        },
+    });
+    const {lat,lng} = response.data.results[0].geometry.location;
+
     listing.owner = req.user._id;
     listing.image = {url,fileName};
+    listing.geometry = {type:"Point",coordinates:[lng,lat]}
     await listing.save();
     req.flash('success',"New Listing Created");
     res.redirect("/listings");

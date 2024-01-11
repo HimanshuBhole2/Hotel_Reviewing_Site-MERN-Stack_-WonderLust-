@@ -130,7 +130,7 @@ body {
 
 /* Maps */
 
-gmp-map {
+#map {
     height: 50vh;
     width: 100vh;
     margin:auto;
@@ -138,7 +138,7 @@ gmp-map {
 
 
   @media (max-width:506px) {
-    gmp-map{
+    #map{
         height:50vh;
         width:auto;
     }
