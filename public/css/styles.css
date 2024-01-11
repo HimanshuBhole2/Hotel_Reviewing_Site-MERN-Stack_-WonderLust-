@@ -1,12 +1,24 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     display: flex;
     flex-direction: column;
-   height: 100vh;
+    min-height: 100vh !important;
+    padding: 0 !important;
+    margin:0 !important;
 }
 
 .container{
-    flex:1;
+    width: 150% !important;
+    border: 1px solid green;
+    /* flex:column; */
+    padding: 0 !important;
+    margin:0 !important;
 }
 .navbar{
     height: 5rem;
@@ -26,6 +38,10 @@ body {
     color: #000 !important;;
 }
 /* Footer Here */
+.footer{
+    margin-top: auto !important;
+    width: 100% !important;
+}
 .f-info{
     background-color: #ebebeb;
     display: flex;
@@ -92,6 +108,14 @@ body {
  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 }
 /* Card Effects */
+.index-row {
+width: 100% !important;
+margin: 0px !important;
+padding: 0px !important;
+
+}
+
+
 .card-img-overlay{
     opacity: 0;
 }
@@ -127,6 +151,62 @@ body {
 #rating:hover{
     border: none !important;
 }
+/* Search Button */
+
+.btn-search{
+    background-color: #fe424d;
+    color:#fff;
+    padding: 0 1rem;
+    border-radius: 25px;
+  }
+  .btn-search:hover{
+    color: #fe424d;
+    background-color:#fff;
+  }
+
+  .searchInp{
+    padding: 0 1.5rem;
+    border-radius: 25px;
+    font-size: 1rem;
+  }
+
+/* Filters  */
+
+#filters{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+ }
+
+ .filter{
+    text-align: center;
+    margin: 0 0.7rem;
+    opacity: 0.7;
+ }
+ .hr-scroll{
+    max-width: 65%;
+ }
+ .tax-toggle{
+    max-width: 30% !important;
+    margin-left: 1.5rem;
+    margin-right:1rem;
+    border: 1px solid black;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+
+ }
+
+ .filter:hover{
+    opacity: 1;
+    cursor: pointer;
+ }
+
+ .tax-info{
+    display:none;
+ }
 
 /* Maps */
 
@@ -150,3 +230,18 @@ body {
 
     }
   }
+
+@media (max-width:854px) {
+    #filters{
+        flex-direction: column !important;
+        border-radius: 0%;
+    }
+    .tax-toggle{
+        margin:1rem 0rem !important;
+        max-width: 70% !important;
+    }
+    .hr-scroll{
+        margin:1rem 0rem !important;
+        max-width: 100% !important;
+    }
+}

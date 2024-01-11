@@ -1,22 +1,30 @@
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top border-bottom">
-    <a class="navbar-brand" href="/"><i class="fa-regular fa-compass"></i></a>
+    <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link" href="/">Home</a>
-        <a class="nav-item nav-link" href="/listings">View All List</a>
-        <a class="nav-item nav-link" href="/listings/new">Add New List</a>
+        <a class="nav-item nav-link" href="/listings">Explore</a>
       </div>
 
       <div class="navbar-nav ms-auto">
+        <form class="d-flex">
+          <input class="form-control me-2 searchInp" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-search" type="submit">Search</button>
+        </form>
+      </div>
+
+      <div class="navbar-nav ms-auto">
+        <a class="nav-item nav-link" href="/listings/new">AirBnb Your Home</a>
         <%if(!currUser) {%>
-        <a class="nav-item nav-link" href="/signup">SignUp</a>
-        <a class="nav-item nav-link" href="/login">LogIn</a>
+        <a class="nav-item nav-link" href="/signup"><b>SignUp</b></a>
+        <a class="nav-item nav-link" href="/login"><b>LogIn</b></a>
         <%}%>
         <%if(currUser) {%>
-        <a class="nav-item nav-link" href="/logout">LogOut</a>
+        <a class="nav-item nav-link" href="/logout"><b>LogOut</b></a>
         <%}%>
       </div>
     </div>
