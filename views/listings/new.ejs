@@ -30,7 +30,7 @@
 
         <div class="col-12">
             <label for="Image" class="form-label">Upload Image</label>
-            <input name="listing[image]" type="file" class="form-control" id="image" placeholder="Image Link Here">
+            <input name="listing[image]" type="file" class="form-control" id="image" placeholder="Image Link Here" required>
         </div>
          
 
@@ -53,11 +53,32 @@
               </div>
         </div>
 
-        <div class="col-12">
+        <div class="col-md-8">
             <label for="location" class="form-label">Location</label>
             <input  name="listing[location]" placeholder="Jalgaon, Maharashtra" type="text" class="form-control" id="location" required>
             <div class="invalid-feedback">
                 Please provide Location.
+              </div>
+        </div>
+
+        <div class="col-md-4">
+                <label for="dropdown">category :</label>
+                <select class="form-control" name="listing[category]"  id="dropdown" required>
+                    <option value="Trending">Trending</option>
+                    <option value="Farm">Farm</option>
+                    <option value="Rooms">Rooms</option>
+                    <option value="Castel">Castel</option>
+                    <option value="Iconic City">Rooms</option>
+                    <option value="Mountain View">Mountain View</option>
+                    <option value="Beach">Beach</option>
+                    <option value="Cabins">Cabins</option>
+                    <option value="Camping">Camping</option>
+                    <option value="Glofing">Glofing</option>
+                    <option value="Island">Island</option>
+                </select>
+
+            <div class="invalid-feedback">
+                Please provide category.
               </div>
         </div>
         

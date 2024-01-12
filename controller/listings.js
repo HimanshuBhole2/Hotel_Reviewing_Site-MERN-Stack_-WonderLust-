@@ -70,6 +70,9 @@ module.exports.addNewListings = async (req, res, next) => {
     let fileName = req.file.filename;
     let listing = new ListingModel(req.body.listing);
 
+    console.log(listing.category);
+
+    
     const response = await axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
         params: {
             address: listing.location,

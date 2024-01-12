@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-12">
                     <label for="image" class="form-label">Image Link</label>
-                    <input name="listing[image]"  type="file" class="form-control" id="image" required>
+                    <input name="listing[image]"  type="file" class="form-control" id="image" >
                 </div>
 
                 <div class="col-md-4">
@@ -58,7 +58,7 @@
                       </div>
                 </div>
 
-                <div class="col-12">
+                <div class="col-md-8">
                     <label for="location" class="form-label">Location</label>
                     <input  name="listing[location]" value="<%=listing.location%>" type="text" class="form-control" id="location" required>
                     <div class="invalid-feedback">
@@ -68,6 +68,29 @@
                         Looks Good!.
                       </div>
                 </div>
+
+                <div class="col-md-4">
+                  <label for="dropdown">Category :</label>
+                  <select class="form-control" name="listing[category]"  id="dropdown"
+                  required>
+                  <option value="<%=listing.category%>"><%=listing.category%></option>
+                      <option value="Trending">Trending</option>
+                      <option value="Farm">Farm</option>
+                      <option value="Rooms">Rooms</option>
+                      <option value="Castel">Castel</option>
+                      <option value="Iconic City">Rooms</option>
+                      <option value="Mountain View">Mountain View</option>
+                      <option value="Beach">Beach</option>
+                      <option value="Cabins">Cabins</option>
+                      <option value="Camping">Camping</option>
+                      <option value="Glofing">Glofing</option>
+                      <option value="Island">Island</option>
+                  </select>
+  
+              <div class="invalid-feedback">
+                  Please provide category.
+                </div>
+          </div>
 
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary add-btn">Update</button>

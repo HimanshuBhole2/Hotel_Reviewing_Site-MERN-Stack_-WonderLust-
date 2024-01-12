@@ -25,6 +25,17 @@ router.get("/new",isLoggedIn,wrapAsync(ListingController.renderNewForm));
 router.get("/:id/edit",isLoggedIn,isOwner,wrapAsync(ListingController.editNewListings));
 
 
+// Filter
+router.get("/category",async (req,res)=>{
+    let category =await req.query.category;
+    console.log(category);
+    let FilterdListings = await ListingModel.find({ category: category });
+    res.render("listings/index.ejs",{allListning: FilterdListings});
+})
+
+
+
+
 router.route("/:id")
 // Show Route
     .get(wrapAsync(ListingController.showListings))
@@ -32,6 +43,9 @@ router.route("/:id")
     .put(isLoggedIn,isOwner,upload.single("listing[image]"),validateListing,wrapAsync(ListingController.updateListings))
 // delete ROute 
     .delete(isLoggedIn,isOwner,wrapAsync(ListingController.destroyListings));
+
+
+
 
 
 module.exports = router;

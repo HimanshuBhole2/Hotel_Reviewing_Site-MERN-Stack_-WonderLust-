@@ -6,12 +6,15 @@
 
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
+    min-height: 100vh !important;
+    width: 100% !important;
     display: flex;
     flex-direction: column;
-    min-height: 100vh !important;
     padding: 0 !important;
     margin:0 !important;
+    
 }
+
 
 .container{
     width: 150% !important;
@@ -37,8 +40,14 @@ body {
 .nav-link:hover{
     color: #000 !important;;
 }
+
+/* Flash Message */
+.flash-msg{
+    width: 70% !important;  
+    align-self: center !important;
+}
 /* Footer Here */
-.footer{
+footer{
     margin-top: auto !important;
     width: 100% !important;
 }
@@ -184,6 +193,11 @@ padding: 0px !important;
     margin: 0 0.7rem;
     opacity: 0.7;
  }
+
+ .filter a{
+    text-decoration: none;
+    color: #000;
+ }
  .hr-scroll{
     max-width: 65%;
  }
@@ -222,13 +236,6 @@ padding: 0px !important;
         height:50vh;
         width:auto;
     }
-    .container{
-        height: 100vh;
-        width: auto;
-        padding: auto;
-        margin: auto;
-
-    }
   }
 
 @media (max-width:854px) {
@@ -243,5 +250,12 @@ padding: 0px !important;
     .hr-scroll{
         margin:1rem 0rem !important;
         max-width: 100% !important;
+    }
+}
+
+@media (max-width:807px) {
+    .flash-msg{
+        width: 90% !important;  
+        align-self: center;
     }
 }
