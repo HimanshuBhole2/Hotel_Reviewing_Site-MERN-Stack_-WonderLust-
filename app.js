@@ -104,7 +104,7 @@ app.use('/',userRouter);
 
 
 app.get("/",(req,res)=>{
-    res.send("<h1>This is our Home Page </h1>")
+    res.redirect("/listings");
 })
 
 app.all("*",(req,res,next)=>{
