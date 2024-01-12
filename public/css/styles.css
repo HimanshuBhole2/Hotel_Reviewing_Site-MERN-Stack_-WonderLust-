@@ -3,18 +3,27 @@
     margin: 0px;
     padding: 0px;
 }
-
+html{
+    height: 100%;
+    box-sizing: border-box;
+}
 body {
+    
     font-family: 'Plus Jakarta Sans', sans-serif;
     min-height: 100vh !important;
     width: 100% !important;
     display: flex;
     flex-direction: column;
-    padding: 0 !important;
+    position: relative;
+    padding-bottom: 9rem !important;
     margin:0 !important;
-    
+    box-sizing: inherit;
 }
 
+.row{
+    width: 100%;
+    margin: 0px !important;
+}
 
 .container{
     width: 150% !important;
@@ -25,6 +34,7 @@ body {
 }
 .navbar{
     height: 5rem;
+    background-color: #ebebeb;
 }
 
 .fa-compass{
@@ -50,6 +60,10 @@ body {
 footer{
     margin-top: auto !important;
     width: 100% !important;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
 }
 .f-info{
     background-color: #ebebeb;
@@ -137,8 +151,12 @@ padding: 0px !important;
     background-color: #fe424d !important;
     border: none !important;
 }
-
-.aleart
+/* edit Form */
+.original-img{
+    border: 2px solid gray;
+    max-width:15rem;
+    max-height:10rem; 
+}
 
 /* Show  */
 
@@ -222,6 +240,13 @@ padding: 0px !important;
     display:none;
  }
 
+/* Dropdown */
+#dropdown{
+    height: auto !important;
+    max-height: 200px !important;
+    overflow-x: hidden !important;
+}
+
 /* Maps */
 
 #map {
@@ -253,9 +278,38 @@ padding: 0px !important;
     }
 }
 
-@media (max-width:807px) {
+
+
+@media (max-width:633px) {
+    
+
+    .responsive-form{
+        height: 100%;
+        width: 100%;
+        margin: 0!important;
+    }
+    .row{
+        margin:0 !important;
+    }
+
+    .star-p{
+        font-size: small !important;
+    }
+
     .flash-msg{
-        width: 90% !important;  
+        min-width: 90% !important;  
         align-self: center;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    
+}
+
+@media (max-width:340px) {
+    .original-img{
+        border: none;
+        width: 8rem;
+        height: 7rem;
     }
 }

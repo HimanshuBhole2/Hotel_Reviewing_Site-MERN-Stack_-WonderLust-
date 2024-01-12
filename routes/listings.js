@@ -26,14 +26,7 @@ router.get("/:id/edit",isLoggedIn,isOwner,wrapAsync(ListingController.editNewLis
 
 
 // Filter
-router.get("/category",async (req,res)=>{
-    let category =await req.query.category;
-    console.log(category);
-    let FilterdListings = await ListingModel.find({ category: category });
-    res.render("listings/index.ejs",{allListning: FilterdListings});
-})
-
-
+router.get("/category",wrapAsync(ListingController.getFilteredListings));
 
 
 router.route("/:id")

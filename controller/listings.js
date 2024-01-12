@@ -8,6 +8,12 @@ module.exports.index = async (req,res)=>{
     
 }
 
+module.exports.getFilteredListings = async (req,res)=>{
+    let category =await req.query.category;
+    let FilterdListings = await ListingModel.find({ category: category });
+    res.render("listings/index.ejs",{allListning: FilterdListings});
+}
+
 module.exports.renderNewForm = async(req,res,next)=>{
     res.render("listings/new.ejs")
    

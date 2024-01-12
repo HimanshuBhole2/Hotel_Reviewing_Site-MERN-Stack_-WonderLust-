@@ -9,6 +9,8 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressErrors.js");
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
+
 const isLoggedIn = require("./middleware.js");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -21,7 +23,8 @@ const userRouter = require("./routes/user.js");
 
 
 // All Constants 
-const monurl = 'mongodb://127.0.0.1:27017/wanderlust'
+// const monurl = 'mongodb://127.0.0.1:27017/wanderlust'
+const dbUrl = process.env.ATLAS_URL;
 const app = express();
 app.set("view engine", "ejs");
 app.set("views",path.join(__dirname,"views"))
@@ -31,11 +34,23 @@ app.engine("ejs",ejsMate);
 app.use(express.static(path.join(__dirname,"/public")))
 
 async function main(){
-    await mongoose.connect(monurl);
+    await mongoose.connect(dbUrl);
 }
 
+const store = MongoStore.create({
+    mongoUrl : dbUrl,
+    crypto:{
+        secret:"mysupersecreatecode"
+    },
+    touchAfter: 24 * 3600
+})
+
+store.on("error",()=>{
+    console.log("Error Occoured in stored ",err);
+})
 
 const sessionOptions =  {
+    store,
     secret:"mysupersecreatecode",
     resave:false,
     saveUninitialized:true,

@@ -1,7 +1,7 @@
 <% layout('/layouts/boilerplate') -%>
 <body>
     <div class="row">
-    <div class="col-8 offset-2" >
+    <div class="col-md-8 col-sm-12 offset-sm-2 responsive-form" >
         <br><br>
             <form method="POST" action="/listings/<%=listing._id%>?_method=PUT" novalidate  class="row g-3 needs-validation" enctype="multipart/form-data">
                 <h3>Edit the list</h3>
@@ -29,7 +29,7 @@
                 </div>
                 <div class="mb-1 ">
                   The Original Image : <br>
-                  <img src="<%=OriginalImage%>" width="300px" height="200px" srcset="">
+                  <img class="original-img" src="<%=OriginalImage%>"srcset="">
                 </div>
                 <div class="col-12">
                     <label for="image" class="form-label">Image Link</label>
