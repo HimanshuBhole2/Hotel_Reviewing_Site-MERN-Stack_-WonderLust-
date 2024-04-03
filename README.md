@@ -29,7 +29,7 @@ It is an innovative Airbnb-style website that embodies a journey in full-stack d
 
 To get started with Website, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/HimanshuBhole2/Hotel-Reviewing-Site.git`
+1. Clone the repository: `git clone https://github.com/HimanshuBhole2/Hotel_Reviewing_Site-MERN-Stack_-WonderLust-.git`
 2. Install dependencies: `npm install`
 3. Run the server: `npm start`
 4. Visit `http://localhost:8080` in your browser to start exploring Website!
