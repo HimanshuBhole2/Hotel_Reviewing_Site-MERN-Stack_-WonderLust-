@@ -4,7 +4,7 @@
 <body>
     <script>
         const MAP_API_KEY = "<%=process.env.MAP_API_KEY%>";
-        const listing = <%-JSON.stringify(listing)%>;
+        const listing = <%- JSON.stringify(listing)%>;
     </script>
     <!-- Map Here -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
